@@ -49,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <h1>Login</h1>
-    <h2>Exercice 2</h2>
-    <h3>Dans notre exemple, tous les utilisateur ont le même jeton stocké dans le Cookie authToken (la valeur 12345). Générer dynamiquement un jeton unique pour chaque utilisateur. Vous pouvez la fonction bin2hex(random_bytes(16)) pour générer un jeton aléatoire au lieu de notre valeur statique 12345.</h3>
+    <h2>Exercice 3</h2>
+    <h3>Créez une page page_user.php qui sera accessible via les login : user et mot de passe : utilisateur </h3>
 
     <form method="POST" action="">
         <label for="username">Nom d'utilisateur :</label>
