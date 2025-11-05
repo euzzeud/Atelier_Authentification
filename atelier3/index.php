@@ -54,6 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
     <br>
     <br>
+    <h1>Exercice 1</h1>
+    <p><a href="/atelier3/exercice1/index.php">Lien de l'exercice 1</a></p>
     <h1>Exercice 2</h1>
     <p>Vous avez visité cette page d'accueil <?=($_SESSION["count"]); ?> fois.</p>
     <br>
