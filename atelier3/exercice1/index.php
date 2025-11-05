@@ -7,10 +7,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     if ($_SESSION['userType'] == 'admin')
         header('Location: page_admin.php'); // Si l'utilisateur s'est déjà connecté alors il sera automatiquement redirigé vers la page protected.php
         exit();
-    } elseif ($_SESSION['userType'] == 'user') {
+    elseif ($_SESSION['userType'] == 'user') {
         header('Location: page_user.php'); // Si l'utilisateur s'est déjà connecté alors il sera automatiquement redirigé vers la page protected.php
         exit();
     }
+}
 
 // Gérer le formulaire de connexion
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,6 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Vérification simple des identifiants (à améliorer avec une base de données)
     if ($username === 'admin' && $password === 'secret') {
+
+       // if (!$_SESSION["count"])
+
         // Stocker les informations utilisateur dans la session
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
