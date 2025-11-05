@@ -2,6 +2,12 @@
 // Démarre la session
 session_start();
 
+if (!isset($_SESSION['count'])) {
+    $_SESSION['count'] = 1;
+} elseif (isset($_SESSION['count'])) {
+    $_SESSION['count'] =+1; 
+}
+
 // Vérifier si l'utilisateur est déjà connecté
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     header('Location: page_admin.php'); // Si l'utilisateur s'est déjà connecté alors il sera automatiquement redirigé vers la page protected.php
@@ -46,6 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <br><br>
         <button type="submit">Se connecter</button>
     </form>
+    <br>
+    <br>
+    <h1>Exercice 2</h1>
+    <p>Vous avez visité cette page d'accueil <?=($_SESSION["count"]); ?> fois.</p>
     <br>
     <a href="../index.html">Retour à l'accueil</a>  
 </body>
