@@ -31,7 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Rediriger vers la page protégée
         header('Location: page_admin.php');
         exit();
-    elseif ($username === 'user' && $password === 'utilisateur') {
+
+    } elseif ($username === 'user' && $password === 'utilisateur') {
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['userType'] = 'user';
