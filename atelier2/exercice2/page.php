@@ -18,7 +18,8 @@ if (!isset($_COOKIE['authToken']) || $_COOKIE['authToken'] !== $_SESSION["token"
     <title>Login réussi</title>
 </head>
 <body>
-    <p>Cookie généré : <?=($_COOKIE["authToken"]); ?></p>
+    <p>authToken : <?=($_COOKIE["authToken"]); ?></p>
+    <p>Token de session : <?=($_SESSION["token"]); ?></p>
     <p>Déconnexion dans une minute...</p>
 </body>
 </html>
