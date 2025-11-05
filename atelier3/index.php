@@ -4,8 +4,8 @@ session_start();
 
 if (!isset($_SESSION['count'])) {
     $_SESSION['count'] = 1;
-} elseif (isset($_SESSION['count'])) {
-    $_SESSION['count'] =+1; 
+} else {
+    $_SESSION['count'] += 1; 
 }
 
 // Vérifier si l'utilisateur est déjà connecté
