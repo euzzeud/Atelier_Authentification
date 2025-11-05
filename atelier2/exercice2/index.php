@@ -5,8 +5,9 @@ session_start();
 // Vérifier si l'utilisateur est déjà en possession d'un cookie valide (cookie authToken ayant le contenu 12345)
 // Si l'utilisateur possède déjà ce cookie, il sera redirigé automatiquement vers la page home.php
 // Dans le cas contraire il devra s'identifier.
-if (isset($_COOKIE['authToken']) && $_COOKIE['authToken'] === '12345') {
-    header('Location: page_admin.php');
+
+if (isset($_COOKIE['authToken']) && $_COOKIE['authToken'] === $_SESSION["token"]) {
+    header('Location: page.php');
     exit();
 }
 
@@ -18,8 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérification simple du username et de son password.
     // Si ok alors on initialise le cookie sur le poste de l'utilisateur 
     if ($username === 'admin' && $password === 'secret') {
-        setcookie('authToken', '12345', time() + 3600, '/', '', false, true); // Le Cookie est initialisé et valable pendant 1 heure (3600 secondes) 
-        header('Location: page_admin.php'); // L'utilisateur est dirigé vers la page home.php
+        $_SESSION["token"] = bin2hex(random_bytes(16));
+        setcookie('authToken', $_SESSION["token"], time() + 60, '/', '', false, true);
+        header('Location: page.php'); // L'utilisateur est dirigé vers la page home.php
         exit();
     } else {
         $error = "Nom d'utilisateur ou mot de passe incorrect.";
@@ -28,16 +30,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Login</title>
 </head>
 <body>
-    <h1>Atelier authentification par Cookie</h1>
-    <h2>Exemple</h2>
-    <h3>La page <a href="page_admin.php">page_admin.php</a> est inaccéssible tant que vous ne vous serez pas connecté avec le login 'admin' et mot de passe 'secret'</h3>
+    <h1>Login</h1>
+    <h2>Exercice 2</h2>
+    <h3>Dans notre exemple, tous les utilisateur ont le même jeton stocké dans le Cookie authToken (la valeur 12345). Générer dynamiquement un jeton unique pour chaque utilisateur. Vous pouvez la fonction bin2hex(random_bytes(16)) pour générer un jeton aléatoire au lieu de notre valeur statique 12345.</h3>
+
     <form method="POST" action="">
         <label for="username">Nom d'utilisateur :</label>
         <input type="text" id="username" name="username" required>
@@ -48,15 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Se connecter</button>
     </form>
     <br>
-    <br>
-    <h2>Exercice 1</h2>
-    <p>Lien de l'exercice 1 : <a href="/exercice1/index.php"></a></p>
-    <br>
-    <br>
-    <h2>Exercice 2</h2>
-    <p>Lien de l'exercice 2 : <a href="/exercice2/index.php"></a></p>
-    <br>
-    <br>
-    <a href="../index.html">Retour à l'accueil</a>  
+    <a href="../index.html">Retour à l'accueil</a> 
+
 </body>
 </html>
