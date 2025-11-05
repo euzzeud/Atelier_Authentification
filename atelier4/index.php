@@ -1,5 +1,11 @@
 <?php
 // Nom d'utilisateur et mot de passe corrects
+
+$users =[
+    ['username' => 'admin', 'userType' => 'admin', 'password' => 'secret'],
+    ['username' => 'user', 'userType' => 'user', 'password' => 'utilisateur']
+]
+
 $valid_username = 'admin';
 $valid_password = 'secret';
 
