@@ -27,6 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $error = "Nom d'utilisateur ou mot de passe incorrect.";
     }
+
+    if ($username === 'admin' && $password === 'secret') {
+        $_SESSION["token"] = bin2hex(random_bytes(16));
+        $_SESSION["username"] = $username;
+        setcookie('authToken', $_SESSION["token"], time() + 60, '/', '', false, true);
+        header('Location: page_admin.php'); // L'utilisateur est dirigé vers la page home.php
+        exit();
+    } else {
+        $error = "Nom d'utilisateur ou mot de passe incorrect.";
+    }
 }
 ?>
 
