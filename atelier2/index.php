@@ -50,11 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <br>
     <br>
     <h2>Exercice 1</h2>
-    <p><a href="/exercice1/index.php">Lien de l'exercice 1</a></p>
+    <p><a href="/atelier2/exercice1/index.php">Lien de l'exercice 1</a></p>
     <br>
     <br>
     <h2>Exercice 2</h2>
-    <p><a href="/exercice2/index.php">Lien de l'exercice 2</a></p>
+    <p><a href="/atelier2/exercice1/index.php">Lien de l'exercice 2</a></p>
     <br>
     <br>
     <a href="../index.html">Retour à l'accueil</a>  
